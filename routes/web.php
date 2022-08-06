@@ -18,3 +18,4 @@ use App\Http\Controllers\Frontend\BlogController;
 */
 
 Route::get('/',[HomeController::class,'index'] );
+Route::get('contactpage',[ContactController::class,'index'] );

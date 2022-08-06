@@ -1,5 +1,5 @@
 @extends('frontend.layouts.main')
-@section('main-section');
+@section('main-container');
 
 <div class="contact-page bottom-line">
     <div class="container">
@@ -49,10 +49,28 @@
                         <div class="sub-title">
                             <h2>Contact Us</h2>
                         </div>
-                        <form>
+
+
+                        {!! Form::open([
+                            'url' => url('storefile'),
+                            'method' => 'post',
+                            'id' => 'contact',
+                            'class' => 'cntct-frm',
+                            'enctype' => 'multipart/form-data',
+                            
+                            
+                            ]) !!}
+
+                        <!-- <form> -->
                             <div class="form-fields">
                                 <label class="full-size">
-                                    <input type="text" placeholder="Full Name">
+                                    {!!form::text('name','',[
+                                        'id' => 'name',
+                                        'class' => 'name',
+                                        'placeholder' => 'Name',
+                                        'required' => ''
+                                        ])!!}
+                                    <!-- <input type="text" placeholder="Full Name"> -->
                                 </label>
                                 <label class="full-size">
                                     <input type="text" placeholder="Subject">
@@ -66,11 +84,29 @@
                                 <label class="full-size">
                                     <textarea placeholder="How do you see us working together?"></textarea>
                                 </label>
+
+                                <label class="full-size">
+                                {!!form::select('country',
+                                    [
+                                        '1' => 'Pakistan',
+                                        '2' =>  'China'
+                                    ],
+                                    null,
+                                    [
+                                        'id' => 'select',
+                                        'class' => 'country',
+                                       
+                                        'required' => " ",
+                                        ])!!}
+                                </label>
                             </div>
                             <div class="submit-form">
                                 <button type="button" class="main-btn">Submit</button>
                             </div>
-                        </form>
+                        <!-- </form> -->
+
+{!! Form::close() !!}
+
                         <div class="social-bar">
                             <h3>Follow us:</h3>
                             <ul>
